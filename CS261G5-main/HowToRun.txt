@@ -1,0 +1,8 @@
+Running with dart and flutter:
+ - Run "flutter run" in command line"
+
+Running distributed application:
+ - Go to 'release' directory
+ - unzip zip file of required operating system.
+ - run executable
+ Note: MacOS does not have a build zip due to licensing requirements.

@@ -1,0 +1,43 @@
+# CODEOWNERS file
+
+# This file defines who must review changes before they can be merged.
+
+# Make sure branch protection is enabled with:
+
+# - "Require pull request reviews before merging"
+
+# - "Require review from Code Owners"
+
+# -------------------------------------------------------------------
+
+# Default owners
+
+# -------------------------------------------------------------------
+
+# The rule below applies to ALL files in the repository.
+
+# Any change anywhere will require review from these users.
+
+* @sulsrk @Luftwaffle129
+
+# -------------------------------------------------------------------
+
+# Notes
+
+# -------------------------------------------------------------------
+
+# - Both users will be automatically requested for review on every PR.
+
+# - If branch protection requires 1 approval, either user can approve.
+
+# - If you set required approvals to 2, BOTH users must approve.
+
+# - You can add more specific rules below if needed.
+
+#
+
+# Example (uncomment if needed):
+
+# /docs/ @sulsrk
+
+# /backend/ @Luftwaffle129

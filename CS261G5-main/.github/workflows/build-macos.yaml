@@ -1,0 +1,44 @@
+name: Build macOS App
+on: 
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    env:
+      # This hides that Node.js warning you saw
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true # Speeds up future builds
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Ensure macOS files exist
+        run: flutter create --platforms=macos .
+
+      - name: Enable macOS config
+        run: flutter config --enable-macos-desktop
+
+    # We use '|| true' to catch errors if the directory is missing
+      - name: Air Traffic Simulator MacOS
+        run: flutter build macos --release
+        env:
+          CODE_SIGNING_ALLOWED: NO
+          CODE_SIGNING_REQUIRED: NO
+          CODE_SIGN_IDENTITY: ""
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-app
+          path: build/macos/Build/Products/Release/
